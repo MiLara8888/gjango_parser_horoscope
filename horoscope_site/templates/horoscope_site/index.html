@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load my_filter %}
+{% block css_add %}<link rel="stylesheet" href=" {% static 'horoscope_site/css/index.css' %} "> {% endblock %}
+
+
+{% block title %}
+  Меню
+{% endblock %}
+
+
+{% block content %}
+  <h1>Приложение гороскоп</h1>
+  <ul>
+    {% for i,value in zodiac_dict.items %}
+      <li><a href="{% url 'horoscope_name' zodiac=i %}">{{ value|split|first }}</a></li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}
+

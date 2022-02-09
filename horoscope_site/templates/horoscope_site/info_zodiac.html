@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load my_filter %}
+{% block css_add %}
+<link rel="stylesheet" href=" {% static 'horoscope_site/css/info.css' %} "> {% endblock %}
+
+
+{% block title %} Гороскоп для {{ sign }} {% endblock %}
+
+
+{% block content %}
+
+{% include 'includes/navbar.html' %}
+<h1>{{ description|split|first }}</h1>
+{% if description is None%}
+
+<h2>Неправильный знак зодиака - {{ sign }}</h2>
+
+    {% else %}
+
+   <div><h2>{{ description }}</h2></div>
+    {% endif %}
+<div>
+    <h3>Гороскоп на сегодня:</h3>
+    {{ today|default:"Нет данных" }}<br>
+    <h3>Гороскоп на завтра:</h3>
+    {{ tommorow|default:"Нет данных" }}<br>
+    <h3>Гороскоп на послезавтра:</h3>
+    {{ tommorow2|default:"Нет данных" }}<br>
+</div>
+
+{% endblock %}

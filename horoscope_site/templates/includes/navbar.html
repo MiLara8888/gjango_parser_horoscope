@@ -1,0 +1,12 @@
+{% load my_filter %}
+<nav>
+    <a href="{% url 'index' %}">Главная</a>
+    <a href="https://www.homeenglish.ru/OtherGoroscop.htm">Источник</a>
+    {% for i,value in zodiac_dict.items %}
+    <a href="{% url 'horoscope_name' zodiac=i %}">{{ value|split|first }}</a>
+    {% endfor %}
+
+
+
+
+</nav>
